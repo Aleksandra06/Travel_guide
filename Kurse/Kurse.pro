@@ -25,10 +25,37 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    first_sub_menu_widget.cpp \
+    second_sub_menu_widget.cpp \
+    third_sub_menu_widget.cpp \
+    fourth_sub_menu_widget.cpp \
+    fifth_sub_menu_widget.cpp \
+    second_main_menu_widget.cpp \
+    third_main_menu_widget.cpp \
+    fourth_main_menu_widget.cpp \
+    fifth_main_menu_widget.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    first_sub_menu_widget.h \
+    second_sub_menu_widget.h \
+    third_sub_menu_widget.h \
+    fourth_sub_menu_widget.h \
+    fifth_sub_menu_widget.h \
+    second_main_menu_widget.h \
+    third_main_menu_widget.h \
+    fourth_main_menu_widget.h \
+    fifth_main_menu_widget.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    first_sub_menu_widget.ui \
+    second_sub_menu_widget.ui \
+    third_sub_menu_widget.ui \
+    fourth_sub_menu_widget.ui \
+    fifth_sub_menu_widget.ui \
+    second_main_menu_widget.ui \
+    third_main_menu_widget.ui \
+    fourth_main_menu_widget.ui \
+    fifth_main_menu_widget.ui
