@@ -59,7 +59,7 @@ void MainWindow::fifth_sub_menu()
 //Реализация нажатия на кнопку "Список с собой"
 void MainWindow::on_pushButton_2_clicked()
 {
-    ui->textEdit->setText("Список с собой");
+    //ui->textEdit->setText("Список с собой");
 }
 
 //Реализация нажатия на кнопку "Хочу посетить"
