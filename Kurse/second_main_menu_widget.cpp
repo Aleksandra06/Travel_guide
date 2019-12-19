@@ -2,7 +2,6 @@
 #include "ui_second_main_menu_widget.h"
 #include "QMessageBox"
 #include <QDebug>
-#include <QStandardItem>
 
 Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
     QWidget(parent),
@@ -17,38 +16,29 @@ Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
                                      QObject::tr("Ошибка подключения к базе!!!"));
     }
     else{
-        //Осуществляем запрос
-        QSqlQuery *query = new QSqlQuery();
-        query->exec("SELECT Thing, Mark FROM Things");
-        qDebug() << query->lastError().text();
-        QSqlRecord rec  = query->record();
-        //Создаем модель, в которую поместим данные, а после закинем ее в таблицу
-        QStandardItemModel *model = new QStandardItemModel;
-        QStandardItem *item;
-        //Заголовки столбцов
-        QStringList horizontalHeader;
-        horizontalHeader.append("Название списка");
-        horizontalHeader.append("Пометка");
-        model->setHorizontalHeaderLabels(horizontalHeader);
-        int row = 0;//счетчик строк
-        QString name, inf, visit;
-        while (query->next())
-        {
-            QString Thing = query->value(0).toString();
-            QString Mark = query->value(1).toString();
-            item = new QStandardItem(Thing);
-            model->setItem(row, 0, item);
-            item = new QStandardItem(Mark);
-            model->setItem(row, 1, item);
-            row = row+1;
-        }
-        ui->tableView->setModel(model);
-        ui->tableView->resizeRowsToContents();
-        ui->tableView->resizeColumnsToContents();
+        this->writeTable();
     }
 }
 
 Second_main_menu_widget::~Second_main_menu_widget()
 {
     delete ui;
+}
+
+void Second_main_menu_widget::writeTable(){
+    model = new QSqlTableModel();
+    model->setTable("List_Things");
+    model->setEditStrategy(QSqlTableModel::OnRowChange);
+    model->select();
+    model->removeColumn(0); // don't show the ID
+    model->setHeaderData(0, Qt::Horizontal, tr("Название списка"));
+    model->setHeaderData(1, Qt::Horizontal, tr("Пометка"));
+    ui->tableView->setModel(model);
+    ui->tableView->resizeRowsToContents();
+    ui->tableView->resizeColumnsToContents();
+}
+
+void Second_main_menu_widget::on_pushButton_clicked()
+{
+
 }
