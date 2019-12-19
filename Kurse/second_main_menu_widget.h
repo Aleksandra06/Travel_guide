@@ -1,15 +1,7 @@
 #ifndef SECOND_MAIN_MENU_WIDGET_H
 #define SECOND_MAIN_MENU_WIDGET_H
 
-/*#include <QTableView>
-#include <QWidget>
-#include <QtSql/QSqlDatabase>
-#include "QStandardItemModel"
-#include "QStandardItem"
-#include <QSqlQuery>
-#include <QDebug>*/
 #include <QTSql>
-#include <QDebug>
 
 namespace Ui {
 class Second_main_menu_widget;
