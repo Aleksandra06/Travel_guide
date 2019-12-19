@@ -1,18 +1,47 @@
 #include "second_main_menu_widget.h"
 #include "ui_second_main_menu_widget.h"
+#include <iostream>
 #include <QApplication>
 #include <QMessageBox>
-#include <QSqlRelation>
+#include <QString>
+    //#include <QSqlRelation>
 #include <QSqlTableModel>
-#define ACCESS "DRIVER={Microsoft Access Driver (*.mdb)};" \
-    "FIL={MS Access};DBQ=C:\\DataBase.accdb"
+
+#include "QtSql/QSqlDatabase"
+#include "QSqlQuery"
+
+/*#define ACCESS "DRIVER={Microsoft Access Driver (*.mdb)};" \
+    "FIL={MS Access};DBQ=C:\\Qt\\d\\Travel_guide\\BaseData\\DataBase.mdb"*/
 Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Second_main_menu_widget)
 {
 
     ui->setupUi(this);
-    db = QSqlDatabase::addDatabase("QODBS");
+
+
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("C:\\Qt\\d\\Travel_guide\\BaseData\\DataBase.mdb");
+    db.open();
+
+
+    QSqlTableModel *mModel = new QSqlTableModel(this);
+    mModel->setTable("Travel");
+    mModel->select();
+    ui->tableView->setModel(mModel);
+    /*QSqlQuery query;
+
+
+
+    query.exec("SELECT Id FROM Travel");
+    query.next();
+    QString NameTravel = query.value(0).toString();
+    ui->label_2->setText(NameTravel);*/
+
+
+
+    /*db = QSqlDatabase::addDatabase("QODBS");
     db.setDatabaseName(ACCESS);
     db.setUserName("root");
     db.setPassword("");
@@ -29,7 +58,7 @@ Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
         //QSqlDatabase defaultDB = QSqlDatabase::database();
        // QSqlTableModel  model;
    //     model.setQuery("SELECT * FROM Things");
-      /*  for (int i = 0; i < model.rowCount(); ++i) {
+        for (int i = 0; i < model.rowCount(); ++i) {
                  int id = model.record(i).value("Id").toString();
                  QString nameTravel = model.record(i).value("NameTravel").toInt();
                  QString info = model.record(i).value("Information").toString();
@@ -48,7 +77,6 @@ Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
        // tableViewThin.setModel(model);
        // view->show();
 
-    }
 
 }
 
