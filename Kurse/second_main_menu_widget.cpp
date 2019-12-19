@@ -1,5 +1,6 @@
 #include "second_main_menu_widget.h"
 #include "ui_second_main_menu_widget.h"
+<<<<<<< HEAD
 #include <iostream>
 #include <QApplication>
 #include <QMessageBox>
@@ -12,12 +13,18 @@
 
 /*#define ACCESS "DRIVER={Microsoft Access Driver (*.mdb)};" \
     "FIL={MS Access};DBQ=C:\\Qt\\d\\Travel_guide\\BaseData\\DataBase.mdb"*/
+=======
+#include "QMessageBox"
+#include <QDebug>
+#include <QStandardItem>
+
+>>>>>>> 75dd06bce0f02e6b393c8cd48f8360b649a2bdb9
 Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Second_main_menu_widget)
 {
-
     ui->setupUi(this);
+<<<<<<< HEAD
 
 
     QSqlDatabase db;
@@ -45,14 +52,17 @@ Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
     db.setDatabaseName(ACCESS);
     db.setUserName("root");
     db.setPassword("");
+=======
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("C:\\DataBase.db");
+>>>>>>> 75dd06bce0f02e6b393c8cd48f8360b649a2bdb9
     if(!db.open()){
-        //qDebug()<<db.lastError().text();
-        //db.lastError().showMessage();
-        //вывод сообщения об ошибке подкючения к бд
-    //    QMessageBox::critical(this, "Error", db.lastError().text());
-        ui->label_2->setText("huinya1");
+        qDebug() << db.lastError().text();
+        QMessageBox::warning(0, QObject::tr("Ошибка"),
+                                     QObject::tr("Ошибка подключения к базе!!!"));
     }
     else{
+<<<<<<< HEAD
         ui->label_2->setText("ok");
         //QDebug ()<<"Seccess";
         //QSqlDatabase defaultDB = QSqlDatabase::database();
@@ -78,6 +88,37 @@ Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
        // view->show();
 
 
+=======
+        //Осуществляем запрос
+        QSqlQuery *query = new QSqlQuery();
+        query->exec("SELECT Thing, Mark FROM Things");
+        qDebug() << query->lastError().text();
+        QSqlRecord rec  = query->record();
+        //Создаем модель, в которую поместим данные, а после закинем ее в таблицу
+        QStandardItemModel *model = new QStandardItemModel;
+        QStandardItem *item;
+        //Заголовки столбцов
+        QStringList horizontalHeader;
+        horizontalHeader.append("Название списка");
+        horizontalHeader.append("Пометка");
+        model->setHorizontalHeaderLabels(horizontalHeader);
+        int row = 0;//счетчик строк
+        QString name, inf, visit;
+        while (query->next())
+        {
+            QString Thing = query->value(0).toString();
+            QString Mark = query->value(1).toString();
+            item = new QStandardItem(Thing);
+            model->setItem(row, 0, item);
+            item = new QStandardItem(Mark);
+            model->setItem(row, 1, item);
+            row = row+1;
+        }
+        ui->tableView->setModel(model);
+        ui->tableView->resizeRowsToContents();
+        ui->tableView->resizeColumnsToContents();
+    }
+>>>>>>> 75dd06bce0f02e6b393c8cd48f8360b649a2bdb9
 }
 
 Second_main_menu_widget::~Second_main_menu_widget()
