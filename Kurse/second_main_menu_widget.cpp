@@ -29,13 +29,17 @@ void Second_main_menu_widget::writeTable(){
     model = new QSqlTableModel();
     model->setTable("List_Things");
     model->setEditStrategy(QSqlTableModel::OnRowChange);
+    model->setHeaderData(1, Qt::Horizontal, tr("Название списка"));
+    model->setHeaderData(2, Qt::Horizontal, tr("Пометка"));
     model->select();
-    model->removeColumn(0); // don't show the ID
-    model->setHeaderData(0, Qt::Horizontal, tr("Название списка"));
-    model->setHeaderData(1, Qt::Horizontal, tr("Пометка"));
+    connect(model, SIGNAL(beforeInsert(QSqlRecord &)), this, SLOT(beforeInsertArtist(QSqlRecord &)));
+   // model->removeColumn(0); // don't show the ID
     ui->tableView->setModel(model);
+    ui->tableView->setColumnHidden(0,true);
     ui->tableView->resizeRowsToContents();
     ui->tableView->resizeColumnsToContents();
+    ui->tableView->setSortingEnabled(true);               // Сортировка таблицы
+    ui->tableView->sortByColumn(0,Qt::AscendingOrder);    // Порядок сортировки по умолчанию
 }
 
 void Second_main_menu_widget::on_pushButton_clicked()
