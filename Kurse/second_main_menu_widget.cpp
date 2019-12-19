@@ -1,53 +1,65 @@
 #include "second_main_menu_widget.h"
 #include "ui_second_main_menu_widget.h"
-#include <QApplication>
-#include <QMessageBox>
-#include <QSqlRelation>
-#include <QSqlTableModel>
-#define ACCESS "DRIVER={Microsoft Access Driver (*.mdb)};" \
-    "FIL={MS Access};DBQ=C:\\DataBase.accdb"
+
+#include <QStandardItem>
+//#include <QApplication>
+//#include <QMessageBox>
+//#include <QSqlRelation>
+//#include <QSqlTableModel>
+
 Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Second_main_menu_widget)
 {
 
     ui->setupUi(this);
-    db = QSqlDatabase::addDatabase("QODBS");
-    db.setDatabaseName(ACCESS);
-    db.setUserName("root");
-    db.setPassword("");
+    db = QSqlDatabase::addDatabase("QODBC","Context");
+    db.setDatabaseName("DRIVER={SQL Server}; SERVER=ALEKSANDRA-ПК;DATABASE=TravelBD;Trusted_Connection=Yes;");
+    db.setUserName("user");
+    db.setPassword("user...");
+
     if(!db.open()){
-        //qDebug()<<db.lastError().text();
-        //db.lastError().showMessage();
-        //вывод сообщения об ошибке подкючения к бд
-    //    QMessageBox::critical(this, "Error", db.lastError().text());
-        ui->label_2->setText("huinya1");
+        //вывод сообщения об ошибке подкючения к бд надо сделать
+        qDebug() << db.lastError().text();
+        ui->label_2->setText("Ошибка подключения к базе данных");
     }
     else{
-        ui->label_2->setText("ok");
-        //QDebug ()<<"Seccess";
-        //QSqlDatabase defaultDB = QSqlDatabase::database();
-       // QSqlTableModel  model;
-   //     model.setQuery("SELECT * FROM Things");
-      /*  for (int i = 0; i < model.rowCount(); ++i) {
-                 int id = model.record(i).value("Id").toString();
-                 QString nameTravel = model.record(i).value("NameTravel").toInt();
-                 QString info = model.record(i).value("Information").toString();
-                 qDebug() << id << nameTravel << info;
-             }*/
-       /* for (int i = 0; i < model.rowCount(); ++i) {
-                 int id = model.record(i).value("Id").toInt();
-                 QString nameTravel = model.record(i).value("NameTravel").toString();
-                 QString info = model.record(i).value("Information").toString();
-                 qDebug() << id << name;
-        }*/
-       // model.setTable("Things");
-        //model->setRelation(2, QSqlRelation("city", "id", "name"));
-        //model->setRelation(3, QSqlRelation("country", "id", "name"));
-       // tableViewThings = new QTableView;
-       // tableViewThin.setModel(model);
-       // view->show();
+        //Осуществляем запрос
+        QSqlQuery query;
+        query.exec("SELECT * FROM TravelTable");
+        QSqlRecord rec  = query.record();
 
+        //QStandardItemModel *model = new QStandardItemModel;
+        //QStandardItem *item;
+        //Заголовки столбцов
+        QStringList horizontalHeader;
+        horizontalHeader.append("Список вещей");
+        horizontalHeader.append("Пометка");
+       // model->setHorizontalHeaderLabels(horizontalHeader);
+        //Выводим значения из запроса
+        int row = 0;
+
+        QString name, inf, visit;
+        while (query.next())
+        {
+            name = query.value(rec.indexOf("NameTravel")).toString();
+         //   qDebug() << name;
+      //  QString Thing = query.value(0).toString();
+      //  QString Mark = query.value(1).toString();
+     //   item=new QStandardItem(Thing);
+      //  model->setData(model->index(0,row), Thing);
+     //   qDebug() << Thins.text();
+        //model->setItem(row,0,item);
+ //       item=new QStandardItem(Mark);
+        //model->setItem(row,1,item);
+        row = row+1;
+         ui->label_2->setText("2");
+        }
+        ui->label_2->setText("row.toString()");
+        //ui->tableView->setModel(model);
+
+        //ui->tableView->resizeRowsToContents();
+        //ui->tableView->resizeColumnsToContents();
     }
 
 }
