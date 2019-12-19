@@ -1,7 +1,7 @@
 #ifndef SECOND_MAIN_MENU_WIDGET_H
 #define SECOND_MAIN_MENU_WIDGET_H
 
-#include <QWidget>
+#include <QTSql>
 
 namespace Ui {
 class Second_main_menu_widget;
@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::Second_main_menu_widget *ui;
+    QSqlDatabase db;
 };
 
 #endif // SECOND_MAIN_MENU_WIDGET_H

@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
     fifth_sub = new Fifth_sub_menu_widget(this);
     ui->stackedWidget->addWidget(fifth_sub);
 
-    //Добавление второго пункта главного меню
+    //Добавление второго пункта главного меню (с собой)
     second_main = new Second_main_menu_widget(this);
     ui->stackedWidget->addWidget(second_main);
 
