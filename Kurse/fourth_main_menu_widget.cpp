@@ -8,7 +8,8 @@ Fourth_main_menu_widget::Fourth_main_menu_widget(QWidget *parent) :
 {
     ui->setupUi(this);
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:\\DataBase.db");
+    //db.setDatabaseName("C:\\DataBase.db");
+    db.setDatabaseName("C:\\Qt\\KEKW\\Travel_guide\\BaseData\\DataBase.db");
     if(!db.open()){
         QMessageBox::warning(0, QObject::tr("Ошибка"),
                                      QObject::tr("Ошибка подключения к базе!!!"));
@@ -16,6 +17,10 @@ Fourth_main_menu_widget::Fourth_main_menu_widget(QWidget *parent) :
     else{
         this->writeTable();
     }
+
+    //Привязываем сигнал изменения с кнопкой
+    connect(ui->pushButton_4, SIGNAL(clicked()), this, SIGNAL(change_press()));
+
 }
 
 Fourth_main_menu_widget::~Fourth_main_menu_widget()

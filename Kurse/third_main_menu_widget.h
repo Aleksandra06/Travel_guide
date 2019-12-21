@@ -27,6 +27,11 @@ private:
     QSqlDatabase db;
     void writeTable();
     QSqlTableModel *model;
+
+signals:
+    //сигнал для третьего меню
+    void change_press();
+
 };
 
 #endif // THIRD_MAIN_MENU_WIDGET_H

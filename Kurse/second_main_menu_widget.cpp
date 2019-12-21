@@ -1,6 +1,10 @@
 #include "second_main_menu_widget.h"
 #include "ui_second_main_menu_widget.h"
+
+#include "mainwindow.h"
 #include "QMessageBox"
+
+#include "second_sub_menu_widget.h"
 
 Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
     QWidget(parent),
@@ -8,7 +12,8 @@ Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
 {
     ui->setupUi(this);
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:\\DataBase.db");
+    //db.setDatabaseName("C:\\DataBase.db");
+    db.setDatabaseName("C:\\Qt\\KEKW\\Travel_guide\\BaseData\\DataBase.db");
     if(!db.open()){
         QMessageBox::warning(0, QObject::tr("Ошибка"),
                                      QObject::tr("Ошибка подключения к базе!!!"));
@@ -16,6 +21,12 @@ Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
     else{
         this->writeTable();
     }
+
+
+
+
+    //Привязываем сигнал изменения с кнопкой
+    connect(ui->pushButton_4, SIGNAL(clicked()), this, SIGNAL(change_press()));
 }
 
 Second_main_menu_widget::~Second_main_menu_widget()

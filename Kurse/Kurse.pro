@@ -34,7 +34,10 @@ SOURCES += \
     second_main_menu_widget.cpp \
     third_main_menu_widget.cpp \
     fourth_main_menu_widget.cpp \
-    fifth_main_menu_widget.cpp
+    fifth_main_menu_widget.cpp \
+    change_second_main_menu_widget.cpp \
+    change_third_main_menu_widget.cpp \
+    change_fourth_main_menu_widget.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -46,7 +49,10 @@ HEADERS += \
     second_main_menu_widget.h \
     third_main_menu_widget.h \
     fourth_main_menu_widget.h \
-    fifth_main_menu_widget.h
+    fifth_main_menu_widget.h \
+    change_second_main_menu_widget.h \
+    change_third_main_menu_widget.h \
+    change_fourth_main_menu_widget.h
 
 FORMS += \
         mainwindow.ui \
@@ -58,4 +64,7 @@ FORMS += \
     second_main_menu_widget.ui \
     third_main_menu_widget.ui \
     fourth_main_menu_widget.ui \
-    fifth_main_menu_widget.ui
+    fifth_main_menu_widget.ui \
+    change_second_main_menu_widget.ui \
+    change_third_main_menu_widget.ui \
+    change_fourth_main_menu_widget.ui
