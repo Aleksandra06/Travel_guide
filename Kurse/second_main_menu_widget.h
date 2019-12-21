@@ -18,12 +18,13 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
+    void on_pushButton_3_clicked();
 
 private:
     Ui::Second_main_menu_widget *ui;
     QSqlDatabase db;
     void writeTable();
-    //static QStandardItemModel *model;
     QSqlTableModel *model;
 };
 

@@ -1,7 +1,6 @@
 #include "second_main_menu_widget.h"
 #include "ui_second_main_menu_widget.h"
 #include "QMessageBox"
-#include <QDebug>
 
 Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
     QWidget(parent),
@@ -11,7 +10,6 @@ Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("C:\\DataBase.db");
     if(!db.open()){
-        qDebug() << db.lastError().text();
         QMessageBox::warning(0, QObject::tr("Ошибка"),
                                      QObject::tr("Ошибка подключения к базе!!!"));
     }
@@ -32,8 +30,6 @@ void Second_main_menu_widget::writeTable(){
     model->setHeaderData(1, Qt::Horizontal, tr("Название списка"));
     model->setHeaderData(2, Qt::Horizontal, tr("Пометка"));
     model->select();
-    connect(model, SIGNAL(beforeInsert(QSqlRecord &)), this, SLOT(beforeInsertArtist(QSqlRecord &)));
-   // model->removeColumn(0); // don't show the ID
     ui->tableView->setModel(model);
     ui->tableView->setColumnHidden(0,true);
     ui->tableView->resizeRowsToContents();
@@ -44,5 +40,15 @@ void Second_main_menu_widget::writeTable(){
 
 void Second_main_menu_widget::on_pushButton_clicked()
 {
+//переход в вкладку демонстрации списка
+}
 
+void Second_main_menu_widget::on_pushButton_2_clicked()//Сохранить изменения
+{
+    model->submitAll();
+}
+
+void Second_main_menu_widget::on_pushButton_3_clicked()//Отменить изменения
+{
+    writeTable();
 }
