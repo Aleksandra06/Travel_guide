@@ -9,7 +9,7 @@ Third_main_menu_widget::Third_main_menu_widget(QWidget *parent) :
     ui->setupUi(this);
     db = QSqlDatabase::addDatabase("QSQLITE");
     //db.setDatabaseName("C:\\DataBase.db");
-    db.setDatabaseName("C:\\Qt\\KEKW\\Travel_guide\\BaseData\\DataBase.db");
+    db.setDatabaseName("C:\\Qt\\qq\\Travel_guide\\BaseData\\DataBase.db");
     if(!db.open()){
         QMessageBox::warning(0, QObject::tr("Ошибка"),
                                      QObject::tr("Ошибка подключения к базе!!!"));
@@ -57,4 +57,17 @@ void Third_main_menu_widget::on_pushButton_2_clicked()
 void Third_main_menu_widget::on_pushButton_3_clicked()
 {
     writeTable();
+}
+
+
+//Передача ID по нажатию на кнопку изменить
+void Third_main_menu_widget::on_pushButton_4_clicked()
+{
+    int row;
+    QItemSelectionModel *select = ui->tableView->selectionModel();
+    if(select->hasSelection())
+        row = select->selectedRows().first().row();
+
+    row = ui->tableView->model()->index(row,0).data().toInt();
+    emit send_id_selected(row);
 }

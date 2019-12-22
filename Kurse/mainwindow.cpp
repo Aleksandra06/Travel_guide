@@ -85,6 +85,17 @@ MainWindow::MainWindow(QWidget *parent) :
     //Привязываем слот к сигналу который поменяет окно в виджете + функция возвращения для четвёртого меню
     connect(fourth_main, SIGNAL(change_press()), this, SLOT(fourth_change_widget()));
     connect(change_fourth_menu, SIGNAL(back_to_fourth_main_menu()), this, SLOT(back_to_fourth_main()));
+
+
+
+    //отпрака id в окно изменения для второго окна
+    connect(second_main, SIGNAL(send_id_selected(int)), change_second_menu, SLOT(reicive_id(int)));
+
+    //отпрака id в окно изменения для третьего окна
+    connect(third_main, SIGNAL(send_id_selected(int)), change_third_menu, SLOT(reicive_id(int)));
+
+    //отпрака id в окно изменения для четвёртого окна
+    connect(fourth_main, SIGNAL(send_id_selected(int)), change_fourth_menu, SLOT(reicive_id(int)));
 }
 
 MainWindow::~MainWindow()

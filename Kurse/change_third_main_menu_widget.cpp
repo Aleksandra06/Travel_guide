@@ -15,3 +15,13 @@ Change_third_main_menu_widget::~Change_third_main_menu_widget()
 {
     delete ui;
 }
+
+//Получение id изменяемой записи
+void Change_third_main_menu_widget::reicive_id(int id)
+{
+    QString q = QString::number(id);
+    ui->textEdit->setText(q);
+
+    //сохраняем id
+    selected_id = id;
+}

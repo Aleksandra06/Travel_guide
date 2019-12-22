@@ -21,14 +21,18 @@ private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
 
+    void on_pushButton_4_clicked();
+
 private:
     Ui::Second_main_menu_widget *ui;
+
     QSqlDatabase db;
     void writeTable();
     QSqlTableModel *model;
 signals:
 
-
+    //Передача id
+    void send_id_selected(int);
     //Сигнал для второго меню
     void change_press();
 };

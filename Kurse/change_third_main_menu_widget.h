@@ -17,10 +17,14 @@ public:
 
 private:
     Ui::Change_third_main_menu_widget *ui;
-
+    //переменная для хранения id выделенной строки
+    int selected_id;
 signals:
     //Сигнал возвращения
     void back_to_third_main_menu();
+public slots:
+    //получение id
+    void reicive_id(int id);
 };
 
 #endif // CHANGE_THIRD_MAIN_MENU_WIDGET_H
