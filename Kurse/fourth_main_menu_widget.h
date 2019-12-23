@@ -1,6 +1,7 @@
 #ifndef FOURTH_MAIN_MENU_WIDGET_H
 #define FOURTH_MAIN_MENU_WIDGET_H
 
+#include "mydatabase.h"
 #include <QSqlDatabase>
 #include <QSqlTableModel>
 #include <QWidget>

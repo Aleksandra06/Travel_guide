@@ -37,7 +37,8 @@ SOURCES += \
     fifth_main_menu_widget.cpp \
     change_second_main_menu_widget.cpp \
     change_third_main_menu_widget.cpp \
-    change_fourth_main_menu_widget.cpp
+    change_fourth_main_menu_widget.cpp \
+    mydatabase.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -52,7 +53,8 @@ HEADERS += \
     fifth_main_menu_widget.h \
     change_second_main_menu_widget.h \
     change_third_main_menu_widget.h \
-    change_fourth_main_menu_widget.h
+    change_fourth_main_menu_widget.h \
+    mydatabase.h
 
 FORMS += \
         mainwindow.ui \

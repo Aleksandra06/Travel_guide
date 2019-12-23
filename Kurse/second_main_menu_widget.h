@@ -1,6 +1,7 @@
 #ifndef SECOND_MAIN_MENU_WIDGET_H
 #define SECOND_MAIN_MENU_WIDGET_H
 
+#include "mydatabase.h"
 #include <QTSql>
 #include <QStandardItem>
 
@@ -8,7 +9,7 @@ namespace Ui {
 class Second_main_menu_widget;
 }
 
-class Second_main_menu_widget : public QWidget
+class Second_main_menu_widget : public QWidget// : public myDataBase;
 {
     Q_OBJECT
 
@@ -22,6 +23,8 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
 
 private:
     Ui::Second_main_menu_widget *ui;

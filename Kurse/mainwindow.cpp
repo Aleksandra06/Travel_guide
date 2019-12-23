@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QPushButton>
 #include <QMenu>
-
+#include "mydatabase.h"
 #include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    myDataBase *mdb = new myDataBase();
+    mdb->Connection();
 
     //Выпадающий список для первой кнопки
     QMenu*       pm = new QMenu(ui->pushButton);
