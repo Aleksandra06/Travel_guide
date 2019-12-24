@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "fifth_main_menu_widget.h"
 #include <QApplication>
 #include <QFile>
 #include<QSplashScreen>
@@ -44,6 +45,7 @@ int main(int argc, char *argv[])
     QFile file(":/style.css");
     file.open(QFile::ReadOnly);
     a.setStyleSheet(file.readAll());
+
 
     w.show();
     return a.exec();

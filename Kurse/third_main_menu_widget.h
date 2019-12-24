@@ -17,18 +17,20 @@ class Third_main_menu_widget : public QWidget
 public:
     explicit Third_main_menu_widget(QWidget *parent = 0);
     ~Third_main_menu_widget();
-    void writeTable();
 
 private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_clicked();
     void on_pushButton_3_clicked();
+
     void on_pushButton_4_clicked();
+
     void on_pushButton_5_clicked();
 
 private:
     Ui::Third_main_menu_widget *ui;
     QSqlDatabase db;
+    void writeTable();
     QSqlTableModel *model;
 
 signals:
