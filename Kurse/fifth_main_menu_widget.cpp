@@ -11,7 +11,8 @@ Fifth_main_menu_widget::Fifth_main_menu_widget(QWidget *parent) :
     ui(new Ui::Fifth_main_menu_widget)
 {
     ui->setupUi(this);
-    QFile *File = new QFile("C:\\Qt\\qq\\Travel_guide\\Helper\\helper.html");
+   // QFile *File = new QFile("C:\\Qt\\qq\\Travel_guide\\Helper\\helper.html");
+	QFile *File = new QFile("D:\\study\\OVP\\Travel_guide\\Helper\\helper.html");
     File->open(QFile::ReadOnly | QFile::Text);
     QString html = File->readAll();
     ui->textBrowser->setHtml(html);
@@ -40,7 +41,8 @@ void Fifth_main_menu_widget::onAnchorClicked(const QUrl &link)
 
 void Fifth_main_menu_widget::on_pushButton_clicked()
 {
-    QFile *File= new QFile("C:\\Qt\\qq\\Travel_guide\\Helper\\helper.html");
+   // QFile *File= new QFile("C:\\Qt\\qq\\Travel_guide\\Helper\\helper.html");
+	QFile *File = new QFile("D:\\study\\OVP\\Travel_guide\\Helper\\helper.html");
     File->open(QFile::ReadOnly|QFile::Text);
     QString html = File->readAll();
     ui->textBrowser->setHtml(html);

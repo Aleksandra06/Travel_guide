@@ -16,6 +16,7 @@ class Second_main_menu_widget : public QWidget
 public:
     explicit Second_main_menu_widget(QWidget *parent = 0);
     ~Second_main_menu_widget();
+    void writeTable();
 
 private slots:
     void on_pushButton_clicked();
@@ -28,7 +29,6 @@ private:
     Ui::Second_main_menu_widget *ui;
 
     QSqlDatabase db;
-    void writeTable();
     QSqlTableModel *model;
 
 signals:

@@ -38,6 +38,7 @@ void Second_main_menu_widget::writeTable(){
     ui->tableView->resizeColumnsToContents();
     ui->tableView->setSortingEnabled(true);               // Сортировка таблицы
     ui->tableView->sortByColumn(0,Qt::AscendingOrder);    // Порядок сортировки по умолчанию
+    ui->tableView->horizontalHeader()->setSectionResizeMode(2,QHeaderView::Stretch);
 }
 
 void Second_main_menu_widget::on_pushButton_clicked()//Добавить новый

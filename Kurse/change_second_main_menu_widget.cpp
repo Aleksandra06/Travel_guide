@@ -1,4 +1,5 @@
 #include "change_second_main_menu_widget.h"
+#include "second_main_menu_widget.h"
 #include "ui_change_second_main_menu_widget.h"
 #include <QMessageBox>
 #include <QSqlTableModel>
@@ -52,6 +53,7 @@ void Change_second_main_menu_widget::wtiteTableThings(){
     ui->tableView->resizeColumnsToContents();
     ui->tableView->setSortingEnabled(true);               // Сортировка таблицы
     ui->tableView->sortByColumn(0,Qt::AscendingOrder);    // Порядок сортировки по умолчанию
+    ui->tableView->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Stretch);
 }
 
 void Change_second_main_menu_widget::on_pushButton_2_clicked()
@@ -66,4 +68,10 @@ void Change_second_main_menu_widget::on_pushButton_2_clicked()
         model->submitAll();
         wtiteTableThings();
     }
+}
+
+void Change_second_main_menu_widget::on_pushButton_clicked()
+{
+    Second_main_menu_widget *main = new Second_main_menu_widget();
+    main->writeTable();
 }

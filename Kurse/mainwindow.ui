@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>10</y>
-      <width>221</width>
-      <height>481</height>
+      <width>231</width>
+      <height>501</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -55,7 +55,23 @@
      <item>
       <widget class="QPushButton" name="pushButton_5">
        <property name="text">
-        <string>Настройки</string>
+        <string>Cправка</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="maximumSize">
+        <size>
+         <width>228</width>
+         <height>340</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../BaseData/menushk.jpg</pixmap>
        </property>
       </widget>
      </item>
@@ -67,7 +83,7 @@
       <x>229</x>
       <y>9</y>
       <width>521</width>
-      <height>481</height>
+      <height>501</height>
      </rect>
     </property>
     <property name="frameShape">
