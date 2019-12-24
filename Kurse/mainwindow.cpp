@@ -90,14 +90,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 
-    //отпрака id в окно изменения для второго окна
+    //отправка id в окно изменения для второго окна
     connect(second_main, SIGNAL(send_id_selected(int)), change_second_menu, SLOT(reicive_id(int)));
 
-    //отпрака id в окно изменения для третьего окна
+    //отправка id в окно изменения для третьего окна
     connect(third_main, SIGNAL(send_id_selected(int)), change_third_menu, SLOT(reicive_id(int)));
 
-    //отпрака id в окно изменения для четвёртого окна
+    //отправка id в окно изменения для четвёртого окна
     connect(fourth_main, SIGNAL(send_id_selected(int)), change_fourth_menu, SLOT(reicive_id(int)));
+
+    //отправка новой строки в окно изменения для второго окна
+    connect(second_main, SIGNAL(send_new_row(int)), change_second_menu, SLOT(reicive_new_row(int)));
 }
 
 MainWindow::~MainWindow()

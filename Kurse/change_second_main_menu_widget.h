@@ -29,6 +29,9 @@ public slots:
     //получение id
     void reicive_id(int id);
 
+    //получение новой строки
+    void reicive_new_row(int row);
+
 };
 
 #endif // CHANGE_SECOND_MAIN_MENU_WIDGET_H

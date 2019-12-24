@@ -28,3 +28,11 @@ void Change_second_main_menu_widget::reicive_id(int id)
    //сохраняем id
    selected_id = id;
 }
+
+//получение новой строки
+void Change_second_main_menu_widget::reicive_new_row(int row)
+{
+    QString q = QString::number(row);
+    ui->textEdit->setText(q);
+
+}

@@ -18,6 +18,10 @@ Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
     this->writeTable();
     //Привязываем сигнал изменения с кнопкой
     connect(ui->pushButton_4, SIGNAL(clicked()), this, SIGNAL(change_press()));
+
+    //Привязываем сигнал изменения с кнопкой
+    connect(ui->pushButton, SIGNAL(clicked()), this, SIGNAL(change_press()));
+
 }
 
 Second_main_menu_widget::~Second_main_menu_widget()
@@ -33,7 +37,7 @@ void Second_main_menu_widget::writeTable(){
     model->setHeaderData(2, Qt::Horizontal, tr("Пометка"));
     model->select();
     ui->tableView->setModel(model);
-    ui->tableView->setColumnHidden(0,true);
+    //ui->tableView->setColumnHidden(0,true);
     ui->tableView->resizeRowsToContents();
     ui->tableView->resizeColumnsToContents();
     ui->tableView->setSortingEnabled(true);               // Сортировка таблицы
@@ -48,6 +52,8 @@ void Second_main_menu_widget::on_pushButton_clicked()//Добавить новы
   //  writeTable();
     //должна открываться форма для изменения change_second...
     //и передаваться туда навая строка model->index(size+1,0).row()
+    int temp = model->index(size+1,0).row();
+    emit send_new_row(temp);
 
 }
 
