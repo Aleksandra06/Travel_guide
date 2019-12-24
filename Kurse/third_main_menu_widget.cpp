@@ -43,15 +43,10 @@ void Third_main_menu_widget::writeTable(){
 
 void Third_main_menu_widget::on_pushButton_clicked()//добавить
 {
-    //должна открываться форма для изменения change_second...
-    //и передаваться туда -1
     model->sort(0, Qt::AscendingOrder);
     int size = model->rowCount();
     model->insertRow(size);
     int row = model->index(size+1,0).row();
-
-
-
     emit send_new_row(row);
 }
 

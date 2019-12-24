@@ -9,7 +9,7 @@ namespace Ui {
 class Second_main_menu_widget;
 }
 
-class Second_main_menu_widget : public QWidget// : public myDataBase;
+class Second_main_menu_widget : public QWidget
 {
     Q_OBJECT
 
@@ -21,9 +21,7 @@ private slots:
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
-
     void on_pushButton_4_clicked();
-
     void on_pushButton_5_clicked();
 
 private:
@@ -32,10 +30,8 @@ private:
     QSqlDatabase db;
     void writeTable();
     QSqlTableModel *model;
-signals:
 
-    //Передача новой строки для изменения
-    void send_new_row(int);
+signals:
     //Передача id
     void send_id_selected(int);
     //Сигнал для второго меню
