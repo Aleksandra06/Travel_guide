@@ -1,6 +1,7 @@
 #ifndef CHANGE_THIRD_MAIN_MENU_WIDGET_H
 #define CHANGE_THIRD_MAIN_MENU_WIDGET_H
 
+#include <QSqlTableModel>
 #include <QWidget>
 
 namespace Ui {
@@ -19,14 +20,18 @@ private:
     Ui::Change_third_main_menu_widget *ui;
     //переменная для хранения id выделенной строки
     int selected_id;
+    QSqlTableModel *model;
+    void wtiteform();
+
 signals:
     //Сигнал возвращения
     void back_to_third_main_menu();
+
 public slots:
-    //получение новой строки
-    void reicive_new_row(int row);
     //получение id
     void reicive_id(int id);
+private slots:
+    void on_pushButton_2_clicked();
 };
 
 #endif // CHANGE_THIRD_MAIN_MENU_WIDGET_H
