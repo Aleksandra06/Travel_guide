@@ -25,6 +25,8 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_pushButton_5_clicked();
+
 private:
     Ui::Third_main_menu_widget *ui;
     QSqlDatabase db;
@@ -32,6 +34,8 @@ private:
     QSqlTableModel *model;
 
 signals:
+    //Передача новой строки
+    void send_new_row(int);
     //Передача id
     void send_id_selected(int);
     //сигнал для третьего меню

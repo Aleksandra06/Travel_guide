@@ -101,6 +101,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //отправка новой строки в окно изменения для второго окна
     connect(second_main, SIGNAL(send_new_row(int)), change_second_menu, SLOT(reicive_new_row(int)));
+
+    //отправка данных в окно изменения по нажатию на кнопку добавить третье меню
+    connect(third_main, SIGNAL(send_new_row(int)), change_third_menu, SLOT(reicive_new_row(int)));
+
+    //отправка данных в окно изменения по нажатию на кнопку добавить четвётрое меню
+    connect(fourth_main, SIGNAL(send_new_row(int)), change_fourth_menu, SLOT(reicive_new_row(int)));
 }
 
 MainWindow::~MainWindow()

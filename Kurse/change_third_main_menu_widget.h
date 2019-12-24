@@ -23,6 +23,8 @@ signals:
     //Сигнал возвращения
     void back_to_third_main_menu();
 public slots:
+    //получение новой строки
+    void reicive_new_row(int row);
     //получение id
     void reicive_id(int id);
 };

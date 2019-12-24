@@ -14,6 +14,8 @@ Fourth_main_menu_widget::Fourth_main_menu_widget(QWidget *parent) :
     //Привязываем сигнал изменения с кнопкой
     connect(ui->pushButton_4, SIGNAL(clicked()), this, SIGNAL(change_press()));
 
+    //Привязываем сигнал добавления с кнопкой
+    connect(ui->pushButton, SIGNAL(clicked()), this, SIGNAL(change_press()));
 }
 
 Fourth_main_menu_widget::~Fourth_main_menu_widget()
@@ -30,7 +32,7 @@ void Fourth_main_menu_widget::writeTable(){
     model->select();
     model->setFilter("Visited = 1");
     ui->tableView->setModel(model);
-    ui->tableView->setColumnHidden(0,true);
+    //ui->tableView->setColumnHidden(0,true);
     ui->tableView->setColumnHidden(3,true);
     ui->tableView->resizeRowsToContents();
     ui->tableView->resizeColumnsToContents();
@@ -38,24 +40,31 @@ void Fourth_main_menu_widget::writeTable(){
     ui->tableView->sortByColumn(0,Qt::AscendingOrder);    // Порядок сортировки по умолчанию
 }
 
-void Fourth_main_menu_widget::on_pushButton_clicked()
+void Fourth_main_menu_widget::on_pushButton_clicked()//добавить
 {
-    //перейти во вкладку добавления
+    //должна открываться форма для изменения change_second...
+    //и передаваться туда -2
+    model->sort(0, Qt::AscendingOrder);
+    int size = model->rowCount();
+    model->insertRow(size);
+    int row = model->index(size+1,0).row();
+
+    emit send_new_row(row);
 }
 
-void Fourth_main_menu_widget::on_pushButton_2_clicked()
+void Fourth_main_menu_widget::on_pushButton_2_clicked()//сохранить
 {
     model->submitAll();
 }
 
-void Fourth_main_menu_widget::on_pushButton_3_clicked()
+void Fourth_main_menu_widget::on_pushButton_3_clicked()//обновить
 {
     writeTable();
 }
 
 
 //Передача ID по нажатию на кнопку изменить
-void Fourth_main_menu_widget::on_pushButton_4_clicked()
+void Fourth_main_menu_widget::on_pushButton_4_clicked()//изменить
 {
     int row;
     QItemSelectionModel *select = ui->tableView->selectionModel();
@@ -64,4 +73,20 @@ void Fourth_main_menu_widget::on_pushButton_4_clicked()
 
     row = ui->tableView->model()->index(row,0).data().toInt();
     emit send_id_selected(row);
+}
+
+void Fourth_main_menu_widget::on_pushButton_5_clicked()//удалить
+{
+    //отрывается диалоговое окно "вы точно хотите удалить". Если да, то работаем дальше по тому коду, если нет, то идем нафиг
+    //не знаю как работают диалоговые окна. Если его отдельно надо создавать, то лучше сделать так. чтоб туда строка с вопросом передавалась. ПОтому что могут быть и другие вопросы
+    int row;
+    int id;
+    QItemSelectionModel *select = ui->tableView->selectionModel();
+    if(select->hasSelection()){
+        row = select->currentIndex().row();
+        model->removeRow(row);
+        model->submitAll();
+        id = ui->tableView->model()->index(row,0).data().toInt();
+        writeTable();
+    }
 }

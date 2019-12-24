@@ -47,7 +47,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -68,6 +68,13 @@
      <widget class="QPushButton" name="pushButton_4">
       <property name="text">
        <string>Изменить</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="text">
+       <string>Удалить</string>
       </property>
      </widget>
     </item>
