@@ -1,0 +1,40 @@
+QPushButton {
+   border: 2px solid #8f8f91;
+   border-radius: 6px;
+   background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 red, stop: 1 yellow);
+   color: blue;
+   min-width: 80px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 black, stop: 1 white);
+}
+
+QLabel {
+border: 2px solid gray;
+border-radius: 6px;
+color: #FF1493;
+}
+
+QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: yellow;
+    selection-background-color: darkgray;
+}
+
+QWidget{
+
+}
+
+QTableView{
+    color:red;
+    border: 2px solid gray;
+}
+
+QString{
+    color:red;
+}

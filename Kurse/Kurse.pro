@@ -70,3 +70,6 @@ FORMS += \
     change_second_main_menu_widget.ui \
     change_third_main_menu_widget.ui \
     change_fourth_main_menu_widget.ui
+
+RESOURCES += \
+    css.qrc

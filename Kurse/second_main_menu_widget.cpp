@@ -79,6 +79,15 @@ void Second_main_menu_widget::on_pushButton_4_clicked()//изменить
 
 void Second_main_menu_widget::on_pushButton_5_clicked()//удалить
 {
+     //Диалоговое окно подтверждающее удаление выделенного элемента
+     QMessageBox ms;
+     QAbstractButton *yes = ms.addButton("Да",QMessageBox::YesRole);
+     QAbstractButton *no = ms.addButton("Нет",QMessageBox::NoRole);
+     ms.setText("Уверены, что хотите удалить выбранную запись?");
+     ms.setIcon(QMessageBox::Warning);
+     ms.exec();
+     if(ms.clickedButton() == yes)
+     {
     //отрывается диалоговое окно "вы точно хотите удалить". Если да, то работаем дальше по тому коду, если нет, то идем нафиг
     //не знаю как работают диалоговые окна. Если его отдельно надо создавать, то лучше сделать так. чтоб туда строка с вопросом передавалась. ПОтому что могут быть и другие вопросы
     int row;
@@ -101,5 +110,6 @@ void Second_main_menu_widget::on_pushButton_5_clicked()//удалить
         }
         mod->submitAll();
         writeTable();
+       }
     }
 }
