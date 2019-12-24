@@ -56,28 +56,15 @@
      <x>10</x>
      <y>60</y>
      <width>501</width>
-     <height>251</height>
+     <height>371</height>
     </rect>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>360</y>
-     <width>501</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="placeholderText">
-    <string>Введите пометку...</string>
-   </property>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>320</y>
+     <y>450</y>
      <width>501</width>
      <height>25</height>
     </rect>
@@ -89,7 +76,7 @@
     <item>
      <widget class="QPushButton" name="pushButton_2">
       <property name="text">
-       <string>↵</string>
+       <string>+</string>
       </property>
      </widget>
     </item>

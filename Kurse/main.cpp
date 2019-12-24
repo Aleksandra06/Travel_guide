@@ -33,7 +33,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
 
-    //Заставка
+    //ЗаставкаD:\study\OVP\kurswork\Travel_guide
+    //QSplashScreen splash(QPixmap("D:\\study\\OVP\\kurswork\\Travel_guide\\orig.jfif"));
     QSplashScreen splash(QPixmap("C:\\Qt\\qq\\Travel_guide\\orig.jfif"));
     splash.show();
     loadModules(&splash);

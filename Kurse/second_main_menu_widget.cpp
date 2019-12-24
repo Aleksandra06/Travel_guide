@@ -55,7 +55,7 @@ void Second_main_menu_widget::on_pushButton_2_clicked()//Сохранить из
 
 void Second_main_menu_widget::on_pushButton_3_clicked()//Отменить изменения
 {
-    writeTable();
+    model->revertAll();
 }
 
 void Second_main_menu_widget::on_pushButton_4_clicked()//изменить
