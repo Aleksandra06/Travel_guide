@@ -14,6 +14,8 @@ Fourth_main_menu_widget::Fourth_main_menu_widget(QWidget *parent) :
     //Привязываем сигнал изменения с кнопкой
     connect(ui->pushButton_4, SIGNAL(clicked()), this, SIGNAL(change_press()));
 
+    //Привязываем сигнал добавления с кнопкой
+    connect(ui->pushButton, SIGNAL(clicked()), this, SIGNAL(change_press()));
 }
 
 Fourth_main_menu_widget::~Fourth_main_menu_widget()
@@ -30,7 +32,7 @@ void Fourth_main_menu_widget::writeTable(){
     model->select();
     model->setFilter("Visited = 1");
     ui->tableView->setModel(model);
-    ui->tableView->setColumnHidden(0,true);
+    //ui->tableView->setColumnHidden(0,true);
     ui->tableView->setColumnHidden(3,true);
     ui->tableView->resizeRowsToContents();
     ui->tableView->resizeColumnsToContents();
@@ -42,6 +44,12 @@ void Fourth_main_menu_widget::on_pushButton_clicked()//добавить
 {
     //должна открываться форма для изменения change_second...
     //и передаваться туда -2
+    model->sort(0, Qt::AscendingOrder);
+    int size = model->rowCount();
+    model->insertRow(size);
+    int row = model->index(size+1,0).row();
+
+    emit send_new_row(row);
 }
 
 void Fourth_main_menu_widget::on_pushButton_2_clicked()//сохранить

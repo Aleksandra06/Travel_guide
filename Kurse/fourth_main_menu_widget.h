@@ -34,6 +34,8 @@ private:
     QSqlTableModel *model;
 
 signals:
+    //Передача новой строки
+    void send_new_row(int);
     //Передача id
     void send_id_selected(int);
     //Сигнал для третьего меню

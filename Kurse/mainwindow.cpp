@@ -98,6 +98,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //отпрака id в окно изменения для четвёртого окна
     connect(fourth_main, SIGNAL(send_id_selected(int)), change_fourth_menu, SLOT(reicive_id(int)));
+
+    //отправка данных в окно изменения по нажатию на кнопку добавить третье меню
+    connect(third_main, SIGNAL(send_new_row(int)), change_third_menu, SLOT(reicive_new_row(int)));
+
+    //отправка данных в окно изменения по нажатию на кнопку добавить четвётрое меню
+    connect(fourth_main, SIGNAL(send_new_row(int)), change_fourth_menu, SLOT(reicive_new_row(int)));
 }
 
 MainWindow::~MainWindow()

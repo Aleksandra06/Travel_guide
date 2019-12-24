@@ -13,6 +13,9 @@ Third_main_menu_widget::Third_main_menu_widget(QWidget *parent) :
 
     //Сигнал смены меню
     connect(ui->pushButton_4, SIGNAL(clicked()), this, SIGNAL(change_press()));
+
+    //Сигнал смены меню по нажатию на кнопу добавить
+    connect(ui->pushButton, SIGNAL(clicked()), this, SIGNAL(change_press()));
 }
 
 Third_main_menu_widget::~Third_main_menu_widget()
@@ -29,7 +32,7 @@ void Third_main_menu_widget::writeTable(){
     model->select();
     model->setFilter("Visited = 0");
     ui->tableView->setModel(model);
-    ui->tableView->setColumnHidden(0,true);
+    //ui->tableView->setColumnHidden(0,true);
     ui->tableView->setColumnHidden(3,true);
     ui->tableView->resizeRowsToContents();
     ui->tableView->resizeColumnsToContents();
@@ -37,10 +40,19 @@ void Third_main_menu_widget::writeTable(){
     ui->tableView->sortByColumn(0,Qt::AscendingOrder);    // Порядок сортировки по умолчанию
 }
 
+
 void Third_main_menu_widget::on_pushButton_clicked()//добавить
 {
     //должна открываться форма для изменения change_second...
     //и передаваться туда -1
+    model->sort(0, Qt::AscendingOrder);
+    int size = model->rowCount();
+    model->insertRow(size);
+    int row = model->index(size+1,0).row();
+
+
+
+    emit send_new_row(row);
 }
 
 void Third_main_menu_widget::on_pushButton_2_clicked()//сохранить
