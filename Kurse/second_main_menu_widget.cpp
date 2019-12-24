@@ -1,12 +1,12 @@
 #include "second_main_menu_widget.h"
 #include "ui_second_main_menu_widget.h"
+#include "second_sub_menu_widget.h"
 
 #include "mainwindow.h"
 #include "QMessageBox"
 #include <QAbstractItemView>
 #include "QSqlQuery"
 
-#include "second_sub_menu_widget.h"
 
 Second_main_menu_widget::Second_main_menu_widget(QWidget *parent) :
     QWidget(parent),
@@ -40,9 +40,15 @@ void Second_main_menu_widget::writeTable(){
     ui->tableView->sortByColumn(0,Qt::AscendingOrder);    // Порядок сортировки по умолчанию
 }
 
-void Second_main_menu_widget::on_pushButton_clicked()
+void Second_main_menu_widget::on_pushButton_clicked()//Добавить новый
 {
-//переход в вкладку демонстрации списка
+    model->sort(0, Qt::AscendingOrder);
+    int size = model->rowCount();
+    model->insertRow(size);
+  //  writeTable();
+    //должна открываться форма для изменения change_second...
+    //и передаваться туда навая строка model->index(size+1,0).row()
+
 }
 
 void Second_main_menu_widget::on_pushButton_2_clicked()//Сохранить изменения
@@ -58,7 +64,7 @@ void Second_main_menu_widget::on_pushButton_3_clicked()//Отменить изм
 
 void Second_main_menu_widget::on_pushButton_4_clicked()//изменить
 {
-    int row;
+    int row = 0;
     QItemSelectionModel *select = ui->tableView->selectionModel();
     if(select->hasSelection())
         row = select->currentIndex().row();
@@ -67,6 +73,8 @@ void Second_main_menu_widget::on_pushButton_4_clicked()//изменить
 
 void Second_main_menu_widget::on_pushButton_5_clicked()//удалить
 {
+    //отрывается диалоговое окно "вы точно хотите удалить". Если да, то работаем дальше по тому коду, если нет, то идем нафиг
+    //не знаю как работают диалоговые окна. Если его отдельно надо создавать, то лучше сделать так. чтоб туда строка с вопросом передавалась. ПОтому что могут быть и другие вопросы
     int row;
     int id;
     QItemSelectionModel *select = ui->tableView->selectionModel();
@@ -77,7 +85,7 @@ void Second_main_menu_widget::on_pushButton_5_clicked()//удалить
         id = ui->tableView->model()->index(row,0).data().toInt();
         QSqlTableModel *mod = new QSqlTableModel();
         mod->setTable("Things");
-        int n = mod->columnCount();
+        int n = mod->rowCount();
         for (int i = 0; i<n; i++){
             if(mod->index(i,2).data().toInt() == id){
                 mod->removeRow(i);
