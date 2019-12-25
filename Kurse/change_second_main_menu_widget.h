@@ -36,6 +36,7 @@ public slots:
 private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_clicked();
+    void on_pushButton_3_clicked();
 };
 
 #endif // CHANGE_SECOND_MAIN_MENU_WIDGET_H

@@ -75,3 +75,16 @@ void Change_second_main_menu_widget::on_pushButton_clicked()
     Second_main_menu_widget *main = new Second_main_menu_widget();
     main->writeTable();
 }
+
+void Change_second_main_menu_widget::on_pushButton_3_clicked()
+{
+    int row;
+    int id;
+    QItemSelectionModel *select = ui->tableView->selectionModel();
+    if(select->hasSelection()){
+        row = select->currentIndex().row();
+        model->removeRow(row);
+        model->submitAll();
+        wtiteTableThings();
+    }
+}
