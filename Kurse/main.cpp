@@ -40,6 +40,8 @@ int main(int argc, char *argv[])
     loadModules(&splash);
     splash.finish(&w);
 
+    w.setWindowIcon(QIcon("C:\\Qt\\qq\\Travel_guide\\1.jpg"));
+
     //css файл
     QFile file(":/style.css");
     file.open(QFile::ReadOnly);
