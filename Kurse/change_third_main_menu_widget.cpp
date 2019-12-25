@@ -55,3 +55,8 @@ void Change_third_main_menu_widget::on_pushButton_2_clicked()
     model->submitAll();
     wtiteform();
 }
+
+void Change_third_main_menu_widget::on_pushButton_clicked()
+{
+    on_pushButton_2_clicked();
+}

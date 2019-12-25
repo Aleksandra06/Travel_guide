@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     pm->addAction("Безопастность", this, SLOT(fifth_sub_menu()));
     ui->pushButton->setMenu(pm);
 
-
+    setWindowIcon(QIcon("D:\\study\\OVP\\Travel_guide\\1.ico"));
 
     //Добавление первого виджета для подменю 0
     first_sub = new First_sub_menu_widget(this);
@@ -99,21 +99,15 @@ MainWindow::MainWindow(QWidget *parent) :
     //отправка id в окно изменения для четвёртого окна
     connect(fourth_main, SIGNAL(send_id_selected(int)), change_fourth_menu, SLOT(reicive_id(int)));
 
-    //отправка новой строки в окно изменения для второго окна
-    //connect(second_main, SIGNAL(send_new_row(int)), change_second_menu, SLOT(reicive_new_row(int)));
-
-    //отправка данных в окно изменения по нажатию на кнопку добавить третье меню
-   // connect(third_main, SIGNAL(send_new_row(int)), change_third_menu, SLOT(reicive_new_row(int)));
-
-    //отправка данных в окно изменения по нажатию на кнопку добавить четвётрое меню
-    //connect(fourth_main, SIGNAL(send_new_row(int)), change_fourth_menu, SLOT(reicive_new_row(int)));
+    //при возвращении назад обновляем таблицы
+    connect(change_third_menu, SIGNAL(back_to_third_main_menu()), third_main, SLOT(rebaseTable()));
+    connect(change_fourth_menu, SIGNAL(back_to_fourth_main_menu()), fourth_main, SLOT(rebaseTable()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 //Реализация нажатия на первое подменю
 void MainWindow::first_sub_menu()

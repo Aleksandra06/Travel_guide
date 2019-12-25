@@ -90,3 +90,7 @@ void Third_main_menu_widget::on_pushButton_5_clicked()//удалить
         }
     }
 }
+
+void Third_main_menu_widget::rebaseTable(){
+    writeTable();
+}

@@ -59,6 +59,5 @@ void Change_fourth_main_menu_widget::on_pushButton_2_clicked()//сохранит
 
 void Change_fourth_main_menu_widget::on_pushButton_clicked()
 {
-    //Fourth_main_menu_widget *main = new Fourth_main_menu_widget();
-    //main->writeTable();
+    on_pushButton_2_clicked();
 }

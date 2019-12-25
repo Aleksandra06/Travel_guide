@@ -36,6 +36,9 @@ signals:
     void send_id_selected(int);
     //Сигнал для третьего меню
     void change_press();
+
+public slots:
+    void rebaseTable();
 };
 
 #endif // FOURTH_MAIN_MENU_WIDGET_H

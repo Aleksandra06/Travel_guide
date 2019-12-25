@@ -90,3 +90,8 @@ void Fourth_main_menu_widget::on_pushButton_5_clicked()//удалить
         }
     }
 }
+
+void Fourth_main_menu_widget::rebaseTable(){
+    writeTable();
+}
+

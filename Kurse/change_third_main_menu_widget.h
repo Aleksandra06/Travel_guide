@@ -32,6 +32,7 @@ public slots:
     void reicive_id(int id);
 private slots:
     void on_pushButton_2_clicked();
+    void on_pushButton_clicked();
 };
 
 #endif // CHANGE_THIRD_MAIN_MENU_WIDGET_H
