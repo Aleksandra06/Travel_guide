@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     myDataBase *mdb = new myDataBase();
     mdb->Connection();
 
+    this->setWindowIcon(QIcon("C:\\Qt\\qq\\Travel_guide\\1.ico"));
+
     //Выпадающий список для первой кнопки
     QMenu*       pm = new QMenu(ui->pushButton);
     pm->addAction("Готовимся к путешествию", this, SLOT(first_sub_menu()));
